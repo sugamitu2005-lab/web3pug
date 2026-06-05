@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 10000;
 
 // POSTデータを受け取るための設定
 app.use(express.urlencoded({ extended: true }));
