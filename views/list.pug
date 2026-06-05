@@ -1,0 +1,17 @@
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    title 回答一覧
+  body
+    h1 回答一覧
+
+    if answers.length === 0
+      p まだ回答がありません。
+    else
+      ul
+        each item in answers
+          li #{item.name} さん → #{item.food}
+
+    br
+    a(href="/") フォームへ戻る
