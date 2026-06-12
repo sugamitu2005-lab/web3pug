@@ -1,10 +1,10 @@
 const express = require('express');
 const app = express();
 
-// Render が指定する PORT を必ず使う
-const PORT = process.env.PORT || 10000;
+// ★ ローカルでは 8000 番で動かす
+const PORT = process.env.PORT || 8000;
 
-// 静的ファイル（CSS）を読み込む
+// 静的ファイル（CSS）
 app.use(express.static('public'));
 
 // POSTデータ受け取り
@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 app.set('view engine', 'pug');
 app.set('views', './views');
 
-// メモリ上に回答を保存（DBなし版）
+// メモリ上に回答を保存
 const answers = [];
 
 // GET: フォーム
@@ -22,7 +22,7 @@ app.get('/', (req, res) => {
   res.render('index', { title: 'アンケートフォーム', error: null });
 });
 
-// POST: 保存 + バリデーション
+// POST: 保存
 app.post('/submit', (req, res) => {
   const { name, food } = req.body;
 
@@ -38,7 +38,7 @@ app.post('/submit', (req, res) => {
   res.render('result', { name, food });
 });
 
-// GET: 一覧表示
+// GET: 一覧
 app.get('/list', (req, res) => {
   res.render('list', { answers });
 });
